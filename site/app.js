@@ -19,7 +19,7 @@
   const MSG = {
     required: 'This field is required. · <span lang="es">Este campo es obligatorio.</span>',
     count: 'Enter a whole number from 0 to 50. · <span lang="es">Escriba un número entero del 0 al 50.</span>',
-    people: 'Enter at least 1 person. · <span lang="es">Escriba al menos 1 persona.</span>',
+    people: 'Enter the number of adults or children (at least 1 person). · <span lang="es">Escriba el número de adultos o niños (al menos 1 persona).</span>',
     phone: 'Enter a phone number with at least 10 digits. · <span lang="es">Escriba un número de teléfono de al menos 10 dígitos.</span>',
     email: 'Enter an email like name@example.com. · <span lang="es">Escriba un correo como nombre@ejemplo.com.</span>',
   };
@@ -32,12 +32,14 @@
     switch (id) {
       case 'fn': case 'ln':
         return v ? null : MSG.required;
-      case 'ad': case 'ch':
-        if (!v) return MSG.required;
-        if (!isCount(v)) return MSG.count;
-        if (id === 'ad' && isCount(field('ch').value.trim()) &&
-            Number(v) + Number(field('ch').value.trim()) === 0) return MSG.people;
-        return null;
+      case 'ad': case 'ch': {
+        // A blank count means 0, as long as the household has at least one person.
+        if (v && !isCount(v)) return MSG.count;
+        if (id === 'ch') return null;
+        const ch = field('ch').value.trim();
+        if (ch && !isCount(ch)) return null; // the Children field shows its own error
+        return Number(v || 0) + Number(ch || 0) > 0 ? null : MSG.people;
+      }
       case 'ph':
         if (!v) return MSG.required;
         return v.replace(/\D/g, '').length >= 10 ? null : MSG.phone;
@@ -69,6 +71,8 @@
     input.addEventListener('blur', () => { if (input.value.trim()) show(id, check(id)); });
     input.addEventListener('input', () => {
       if (input.getAttribute('aria-invalid') === 'true') show(id, check(id));
+      // Typing a child count can fix the "at least 1 person" error shown on Adults.
+      if (id === 'ch' && field('ad').getAttribute('aria-invalid') === 'true') show('ad', check('ad'));
     });
   });
 
@@ -107,8 +111,8 @@
     data.set('id', reservationId);
     data.set('firstName', field('fn').value.trim());
     data.set('lastName', field('ln').value.trim());
-    data.set('adults', field('ad').value.trim());
-    data.set('children', field('ch').value.trim());
+    data.set('adults', field('ad').value.trim() || '0');
+    data.set('children', field('ch').value.trim() || '0');
     data.set('phone', field('ph').value.trim());
     data.set('email', field('em').value.trim());
     data.set('website', field('website').value);

@@ -79,14 +79,15 @@
       <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2d5633" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       <span class="legend-text"><span class="legend-en">Number of people in the house</span><span class="legend-es" lang="es">Número de personas en el hogar</span></span>
     </legend>
+    <p class="household-hint" id="household-hint">Leave blank if none. · <span lang="es">Deje en blanco si no hay.</span></p>
     <div class="field">
       <label for="ad"><span class="en">Adults</span><span class="es" lang="es">Adultos</span></label>
-      <input class="input" id="ad" name="adults" type="number" min="0" max="50" step="1" inputmode="numeric" required aria-describedby="ad-err">
+      <input class="input" id="ad" name="adults" type="number" min="0" max="50" step="1" inputmode="numeric" aria-describedby="household-hint ad-err">
       <p class="error" id="ad-err" hidden></p>
     </div>
     <div class="field">
       <label for="ch"><span class="en">Children</span><span class="es" lang="es">Niños</span></label>
-      <input class="input" id="ch" name="children" type="number" min="0" max="50" step="1" inputmode="numeric" required aria-describedby="ch-err">
+      <input class="input" id="ch" name="children" type="number" min="0" max="50" step="1" inputmode="numeric" aria-describedby="household-hint ch-err">
       <p class="error" id="ch-err" hidden></p>
     </div>
   </fieldset>
