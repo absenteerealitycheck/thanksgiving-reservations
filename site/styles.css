@@ -161,7 +161,6 @@ h1 {
 .legend-text { display: flex; flex-direction: column; }
 .legend-en { font-family: var(--serif); font-weight: 900; font-size: 17px; color: var(--green); }
 .legend-es { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--green); }
-.household-hint { grid-column: 1 / -1; margin: -4px 0 0; font-size: 14px; color: #5c4a40; }
 
 .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
