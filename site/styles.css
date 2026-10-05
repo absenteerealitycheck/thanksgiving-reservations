@@ -217,10 +217,11 @@ h1 {
 .return-note > div { display: flex; flex-direction: column; gap: 3px; font-size: 15px; line-height: 1.4; }
 .pantry { font-family: var(--serif); font-weight: 900; color: var(--gold); }
 .return-es { color: #e2d3c6; }
+.pantry-address { font-style: normal; font-weight: 800; color: var(--gold); }
 
 /* QR code back to the online form — shown only on paper / PDF */
 .print-only { display: none; }
-.online-note { margin-top: 6px; font-weight: 700; color: var(--gold); }
+.online-note { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(251, 243, 229, .25); font-weight: 600; color: #e2d3c6; }
 .online-url { font-weight: 600; color: var(--cream); letter-spacing: .01em; }
 .qr { flex: none; margin-left: auto; background: #fff; border-radius: 10px; padding: 7px; }
 .qr img { width: 92px; height: 92px; }
