@@ -218,6 +218,13 @@ h1 {
 .pantry { font-family: var(--serif); font-weight: 900; color: var(--gold); }
 .return-es { color: #e2d3c6; }
 
+/* QR code back to the online form — shown only on paper / PDF */
+.print-only { display: none; }
+.online-note { margin-top: 6px; font-weight: 700; color: var(--gold); }
+.online-url { font-weight: 600; color: var(--cream); letter-spacing: .01em; }
+.qr { flex: none; margin-left: auto; background: #fff; border-radius: 10px; padding: 7px; }
+.qr img { width: 92px; height: 92px; }
+
 /* — tablet — */
 @media screen and (max-width: 760px) {
   :root { --sheet-pad: 28px; }
@@ -271,6 +278,7 @@ h1 {
   body { background: #fff; }
   .page { padding: 0; min-height: 0; }
   .skip-link, [data-noprint], .error { display: none !important; }
+  .print-only { display: block; }
   .sheet { box-shadow: none; margin: 0; max-width: none; border-radius: 20px; padding: 24px 32px 0; zoom: .9; }
   /* Keep everything on one sheet of US Letter. */
   .masthead { gap: 6px; }

@@ -64,6 +64,7 @@ Until `config.js` has a URL, pressing Submit shows a bilingual message asking pe
 - Text and form-control colors meet WCAG 2.1 AA contrast. Compared with the design, the input borders and the small gold text on green were darkened or lightened slightly to pass.
 - There is a "Skip to form" link, a visible focus ring, 44px+ touch targets, and support for Windows high-contrast mode. The page passes an automated axe-core scan with no violations.
 - **Print:** the Print button (or the browser's Print) hides the buttons and messages and prints one US Letter page with empty boxes to write in.
+  The printout (and Save as PDF) adds a QR code and short link in the footer that lead back to the online form. If the site address changes, regenerate `site/assets/qr-online-form.svg` and update the link text in `index.html`.
 
 ## Notes
 
